@@ -1,0 +1,43 @@
+### A kind question. Should be published.
+http POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+  "text": "Thanks Mark, this cleared it up for me. Does the same setup work with Gradle?"
+}
+
+# httpie
+$ http POST http://localhost:8080/comments text="Thanks Mark, this cleared it up for me. Does the same setup work with Gradle?"
+
+### Spam. Should be rejected.
+http POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+  "text": "Great comment!!! I made $5,000 last week with FREE crypto signals. DM me on Telegram to join."
+}
+
+# httpie
+$ http POST http://localhost:8080/comments text="Great comment!!! I made $5,000 last week with FREE crypto signals. DM me on Telegram to join."
+
+### Rude, but not spam. Should be held for a person.
+http POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+  "text": "This is the worst tutorial I have ever read. Do you even know Java?"
+}
+
+# httpie
+$ http POST http://localhost:8080/comments text="This is the worst tutorial I have ever read. Do you even know Java?"
+
+### A link to the reader's own blog. Jev gives about 0.85, under the 0.9 line, so it is held.
+http POST http://localhost:8080/comments
+Content-Type: application/json
+
+{
+  "text": "Nice write-up. I covered the same topic on my blog last month, link is in my profile."
+}
+
+# httpie
+http POST http://localhost:8080/comments text="Nice write-up. I covered the same topic on my blog last month, link is in my profile."

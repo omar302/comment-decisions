@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: comment-decisions
+  ai:
+    systemone:
+      api-key: ${TYPESAFE_API_KEY}
